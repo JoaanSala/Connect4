@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    //Clock Color
+    <color name="blue">#0000FF</color>
+    <color name="red">#FF0000</color>
+
+    //CONNECT 4
+    <color name="black">#000000</color>
+</resources>

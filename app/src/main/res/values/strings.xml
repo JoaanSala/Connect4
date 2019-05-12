@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">Connect-4</string>
+
+    //Activity_Main
+    <string name="App_name">MENÚ PRINCIPAL</string>
+    <string name="help">Ajuda</string>
+    <string name="Start_Game">Començar Partida</string>
+    <string name="Exit">Sortir</string>
+
+    //Settings
+    <string name="Config">CONFIGURACIO</string>
+    <string name="Start">Començar</string>
+    <string name="Alias">Alias identificatiu</string>
+    <string name="Mida">Mida Graella</string>
+    <string name="Temps">Control del temps</string>
+
+    //Help
+    <string name="Tittle_Help">Benvinguts al joc del CONNECT 4!</string>
+    <string name="Help">AJUDA</string>
+    <string name="Text_Help">El joc consisteix en anar introduint fitxer en un tauler vertical amb el objectiu de alinear 4 consecutives del color
+        assignat al jugador (roig) abans que el teu oponent. \n
+        A cada torn, el jugador introdueix una fitxa a la columna triada (sempre i quan no estigui completa), i aquesta cau a la posició més baixa possible. \n
+        Guanya la partida el jugador que primer aconsegueix alinear 4 fitxes consecutives del seu color en horitzontal, vertical o diagonal. \n
+        Si totes les columnes estan plenes i ningú ha aconseguit alinear-ne 4 fitxes, hi ha empat.</string>
+    <string name="Return">Torna al Menú Principal</string>
+
+    //Results
+    <string name="Results">RESULTATS PARTIDA</string>
+    <string name="Dia_Hora">Dia i  Hora</string>
+    <string name="Log">Valors del Log</string>
+    <string name="Email">E-mail destinatari</string>
+    <string name="Send">Enviar e-mail</string>
+    <string name="New">Nova Partida</string>
+
+    //Try_Game
+    <string name="Prueba">PROVA</string>
+</resources>
