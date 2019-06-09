@@ -5,14 +5,21 @@
     <string name="App_name">MENÚ PRINCIPAL</string>
     <string name="help">Ajuda</string>
     <string name="Start_Game">Començar Partida</string>
+    <string name="Go_DB">Consultar Partides</string>
     <string name="Exit">Sortir</string>
 
     //Settings
     <string name="Config">CONFIGURACIO</string>
-    <string name="Start">Començar</string>
+    <string name="Start">Start</string>
     <string name="Alias">Alias identificatiu</string>
     <string name="Mida">Mida Graella</string>
     <string name="Temps">Control del temps</string>
+
+    <string name="seconds">25</string>
+    <string name="error_init">The game could not be started</string>
+    <string name="aliasMenu">Alias</string>
+    <string name="boardMenu">Board</string>
+    <string name="timeMenu">Time control</string>
 
     //Help
     <string name="Tittle_Help">Benvinguts al joc del CONNECT 4!</string>
@@ -25,13 +32,42 @@
     <string name="Return">Torna al Menú Principal</string>
 
     //Results
-    <string name="Results">RESULTATS PARTIDA</string>
-    <string name="Dia_Hora">Dia i  Hora</string>
-    <string name="Log">Valors del Log</string>
-    <string name="Email">E-mail destinatari</string>
-    <string name="Send">Enviar e-mail</string>
-    <string name="New">Nova Partida</string>
+    <string name="Results">GAME RESULTS</string>
+    <string name="Dia_Hora">Day and Time</string>
+    <string name="Log">Log Value</string>
+    <string name="Email">E-mail destination</string>
+    <string name="Send">Send e-mail</string>
+    <string name="New">New Game</string>
 
     //Try_Game
     <string name="Prueba">PROVA</string>
+
+    //SQLite DATABASE
+    <string name="back">GO BACK</string>
+    <string name="delete">DELETE</string>
+    <string name="check_matches">GAMES DATABASE</string>
+    <string name="boardSize">Board size:</string>
+    <string name="detailReg">Match details</string>
+    <string name="defaultId">#</string>
+    <string name="alias">Alias:</string>
+    <string name="dateTimeReg">Date and time:</string>
+    <string name="default_number">0</string>
+    <string name="timeIdentifier">Time control:</string>
+    <string name="numBlack">Num. Black:</string>
+    <string name="numWhite">Num. White:</string>
+    <string name="totalTime">Total time:</string>
+    <string name="stateResult">Match results: </string>
+    <string name="affirmative">Yes</string>
+    <string name="negative">No</string>
+    <string name="log_title">LOG of the match</string>
+
+
+
+    //Preferences
+    <string name="P_Alias">Alias</string>
+    <string name="P_Alias_info">Alias del jugador</string>
+    <string name="P_Time">Control del Temps</string>
+    <string name="P_Time_info">Marcar per a limitar el temps de la partida</string>
+    <string name="P_Grill">Mida Graella</string>
+    <string name="P_Grill_info">Mida de la graella del joc</string>
 </resources>

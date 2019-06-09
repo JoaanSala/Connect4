@@ -3,13 +3,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".GameActivity"
+    android:orientation="horizontal">
 
     <fragment
         android:id="@+id/gameFragment"
         android:name="com.example.connect_4.Fragments.GameFragment"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:layout_weight="1.2"
         tools:layout="@layout/fragment_game" />
+
+    <fragment
+        android:id="@+id/logFragment"
+        android:name="com.example.connect_4.Fragments.LogFragment"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        tools:layout="@layout/fragment_log" />
 
 </LinearLayout>

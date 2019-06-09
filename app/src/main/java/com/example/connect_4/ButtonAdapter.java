@@ -18,7 +18,6 @@ public class ButtonAdapter extends BaseAdapter {
         mContext = c;
     }
 
-
     @Override
     public int getCount() {
         return Tokens.length;

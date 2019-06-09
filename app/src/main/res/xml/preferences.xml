@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+        android:defaultValue="P1"
+        android:key="@string/P_Alias"
+        android:selectAllOnFocus="true"
+        android:singleLine="true"
+        android:title="@string/P_Alias"
+        android:summary="@string/P_Alias_info"
+        android:icon="@drawable/user"
+        />
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/P_Time"
+        android:title="@string/P_Time"
+        android:summary="@string/P_Time_info"
+        android:icon="@drawable/reloj"
+        />
+    <ListPreference
+        android:key="@string/P_Grill"
+        android:title="@string/P_Grill"
+        android:defaultValue="7"
+        android:entries="@array/array_size"
+        android:entryValues="@array/array_size_values"
+        android:summary="@string/P_Grill_info"
+        android:icon="@drawable/quadricula"
+        />
+
+</PreferenceScreen>

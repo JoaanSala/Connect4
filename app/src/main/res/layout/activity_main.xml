@@ -30,7 +30,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/Start_Game"
-            android:onClick="Go_Settings"/>
+            android:onClick="Go_Game"/>
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <Button
+            android:id="@+id/consultar1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Go_DB"
+            android:onClick="Go_DB"/>
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

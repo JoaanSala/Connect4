@@ -8,7 +8,7 @@ import java.util.Date;
 public class Game implements Parcelable {
 
     private final Board board;
-    private final int FourInARow;
+    private int FourInARow;
     private boolean Winner;
     private Player turn;
     private long initTime;
@@ -30,7 +30,7 @@ public class Game implements Parcelable {
         this.leftTime = 30;
     }
 
-    protected Game(Parcel in) {
+    public Game(Parcel in) {
         board = in.readParcelable(Board.class.getClassLoader());
         FourInARow = in.readInt();
         Winner = in.readByte() != 0;
@@ -50,6 +50,10 @@ public class Game implements Parcelable {
             return new Game[size];
         }
     };
+
+    public Game(Board board) {
+        this.board = board;
+    }
 
     public Integer CPUTurn () {
 

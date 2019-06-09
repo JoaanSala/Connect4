@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_size">
+        <item>7</item>
+        <item>6</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="array_size_values">
+        <item>7</item>
+        <item>6</item>
+        <item>5</item>
+    </string-array>
+
+</resources>

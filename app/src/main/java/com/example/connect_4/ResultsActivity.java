@@ -55,7 +55,7 @@ public class ResultsActivity extends Activity implements View.OnClickListener {
                 startActivity(in);
                 break;
             case R.id.NEWGAME:
-                Intent in1 = new Intent(ResultsActivity.this, SettingsActivity.class);
+                Intent in1 = new Intent(ResultsActivity.this, GameActivity.class);
                 startActivity(in1);
                 finish();
                 break;

@@ -8,6 +8,9 @@
     <color name="blue">#0000FF</color>
     <color name="red">#FF0000</color>
 
+    //Tokens
+    <color name="yellow">#FFEB3B</color>
+
     //CONNECT 4
     <color name="black">#000000</color>
 </resources>

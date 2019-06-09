@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameActivity">
+    tools:context=".BDSQLite.AccesDBActivity">
 
     <fragment
-        android:id="@+id/gameFragment"
-        android:name="com.example.connect_4.Fragments.GameFragment"
+        android:id="@+id/queryFragment"
+        android:name="com.example.connect_4.Fragments.QueryFrag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_game" />
+        tools:layout="@layout/fragment_query" />
 
 </LinearLayout>

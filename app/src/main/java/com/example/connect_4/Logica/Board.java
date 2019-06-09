@@ -61,6 +61,10 @@ public class Board implements Parcelable {
                 && p.getRow() >= 0 && p.getRow() <= size - 1;
     }
 
+    public int size() {
+        return size;
+    }
+
     public boolean isEmpty(Position p) {
         return contains(p) && this.cells[p.getRow()][p.getCol()].isEmpty();
     }

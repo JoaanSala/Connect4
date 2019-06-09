@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragments.GameFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/clocklayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:layout_below="@+id/Connect_4">
+            <ImageView
+                android:id="@+id/clock_image"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/reloj"/>
+            <TextView
+                android:id="@+id/numberSeconds"
+                android:textSize="20dp"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="@string/seconds"/>
+            <TextView
+                android:id="@+id/seconds"
+                android:textSize="20dp"
+                android:layout_width="45dp"
+                android:layout_height="40dp"
+                android:text="secs"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Connect_4"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:gravity="center|bottom"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="CONNECT-4"
+                android:fontFamily="@font/splatch"
+                android:textSize="45dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:shadowColor="@color/black"/>
+
+        </LinearLayout>
+
+        <GridView
+            android:id="@+id/grid_view"
+            android:layout_below="@+id/clocklayout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:columnWidth="5dp"
+            android:gravity="bottom|center"
+            android:horizontalSpacing="1dp"
+            android:numColumns="auto_fit"
+            android:verticalSpacing="1dp" />
+
+    </RelativeLayout>
+</FrameLayout>
