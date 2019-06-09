@@ -7,8 +7,10 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import java.io.Serializable;
 
-public class ButtonAdapter extends BaseAdapter {
+
+public class ButtonAdapter extends BaseAdapter implements Serializable {
 
     private Context mContext;
     private Integer[] Tokens;

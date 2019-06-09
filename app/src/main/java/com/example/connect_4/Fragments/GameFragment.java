@@ -1,5 +1,6 @@
 package com.example.connect_4.Fragments;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -34,10 +35,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
-public class GameFragment extends Fragment implements AdapterView.OnItemClickListener{
+public class GameFragment extends Fragment implements AdapterView.OnItemClickListener {
 
     public static final String KEY_TIME = "time";
     public static final String KEY_LOG = "LOG";
+    public static final String KEY_NAME = "name";
+    public static final String KEY_SIZE = "size";
+
 
     private static final String PARCEL_PLAYER = "player";
     private static final String PARCEL_CPU = "cpu";
@@ -57,21 +61,16 @@ public class GameFragment extends Fragment implements AdapterView.OnItemClickLis
     private boolean Timer;
     boolean firstTimer=true;
     private boolean time;
+    private String alias;
     private Bundle data = new Bundle();
-    private View view;
     private Log log;
 
     /*Elements of view*/
     GridView gridView;
-    TextView tvNamePlayer;
-    TextView tvNumDiskPlayer;
-    TextView tvNameCpu;
-    TextView tvNumDiskCPU;
-    TextView tvNumCellsRemaining;
     TextView tvSeconds;
     TextView tvNumberSeconds;
     CountDownTimer timer;
-
+    private View view;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,40 +78,26 @@ public class GameFragment extends Fragment implements AdapterView.OnItemClickLis
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        onActivityCreated(savedInstanceState);
-        return inflater.inflate(R.layout.fragment_game, container, false);
+        view = inflater.inflate(R.layout.fragment_game, container, false);
+
+        SharedPreferences mySharedPreferences = PreferenceManager.getDefaultSharedPreferences(view.getContext());
+
+        time = mySharedPreferences.getBoolean(getString(R.string.P_Time), false);
+        size = Integer.parseInt(mySharedPreferences.getString(getString(R.string.P_Grill),"7"));
+
+        manageGameTable(savedInstanceState);
+
+        return view;
+
     }
 
-    @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        itemsLayout();
+    private void manageGameTable(Bundle savedInstanceState){
 
-        /* Obtenim els paràmetres de l'activitat anterior */
-        Bundle bundle = getActivity().getIntent().getExtras();
-        if (bundle != null) {
-
-            time = bundle.getBoolean(KEY_TIME);
-            log = bundle.getParcelable(KEY_LOG);
-
-            namePlayer = log.getPlayer();
-            sizeTable = log.getGrid();
-        } else {
-            Toast.makeText(getActivity(), getString(R.string.error_init), Toast.LENGTH_LONG).show();
-            getActivity().finish();
-        }
-        if (savedInstanceState != null) {
-            board = savedInstanceState.getParcelable(PARCEL_BOARD);
-            player = savedInstanceState.getParcelable(PARCEL_PLAYER);
-            cpu = savedInstanceState.getParcelable(PARCEL_CPU);
-            game = savedInstanceState.getParcelable(PARCEL_GAME);
-            log = savedInstanceState.getParcelable(PARCEL_LOG);
-            firstTimer=savedInstanceState.getBoolean(TIMER);
-
+        if(savedInstanceState != null && (savedInstanceState.getSerializable("game") != null)){
+            game = (Game) savedInstanceState.getSerializable("game");
+            image_table = (ButtonAdapter) savedInstanceState.getSerializable("table");
         } else {
             game = new Game(size, 4);
             image_table = new ButtonAdapter(getContext());
@@ -127,13 +112,7 @@ public class GameFragment extends Fragment implements AdapterView.OnItemClickLis
         gridView.setOnItemClickListener(this);
     }
 
-    private void itemsLayout() {
-        gridView = this.getView().findViewById(R.id.grid_view);
-        tvSeconds = this.getView().findViewById(R.id.seconds);
-        tvNumberSeconds = this.getView().findViewById(R.id.numberSeconds);
-    }
 
-    @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         int col = position % size;

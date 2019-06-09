@@ -7,6 +7,7 @@ public class Player implements Parcelable {
 
     private static final char PLAYER1 = '1';
     private static final char CPU = '0';
+    private boolean turn;
 
     private final char id;
 
@@ -51,6 +52,7 @@ public class Player implements Parcelable {
     public char getId() {
         return id;
     }
+
 
     @Override
     public String toString() {

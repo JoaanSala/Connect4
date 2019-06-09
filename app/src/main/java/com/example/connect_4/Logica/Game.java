@@ -130,6 +130,10 @@ public class Game implements Parcelable {
         }
     }
 
+    public long getGameTime() {
+        return leftTime;
+    }
+
     public long getRestTime() {
         return leftTime;
     }

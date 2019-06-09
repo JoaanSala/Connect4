@@ -28,6 +28,7 @@
         <activity android:name=".GameActivity"></activity>
         <activity
             android:name=".ResultsActivity"
+            android:theme="@style/AppTheme"
             android:label="@string/Prueba">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

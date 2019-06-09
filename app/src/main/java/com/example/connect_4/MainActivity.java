@@ -15,9 +15,6 @@ import com.example.connect_4.Preferences.PreferencesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static final String KEY_TIME = "time";
-    public static final String KEY_LOG = "LOG";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,18 +28,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void Go_Game(View clickedButton) {
         Intent in = new Intent(this, GameActivity.class);
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Bundle b = new Bundle();
-        Log log = new Log();
-
-        log.setPlayer(sp.getString(getString(R.string.aliasMenu), "Player1"));
-        log.setGrid(Integer.parseInt(sp.getString(getString(R.string.boardMenu), "8")));
-        if (sp.getBoolean(getString(R.string.timeMenu), false))
-            b.putBoolean(KEY_TIME, true);
-        else
-            b.putBoolean(KEY_TIME, false);
-        b.putParcelable(KEY_LOG,log);
-        in.putExtras(b);
         startActivity(in);
     }
 
