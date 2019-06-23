@@ -39,7 +39,7 @@
                 android:id="@+id/tittle5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/Dia_Hora"
                 android:textSize="20dp"
                 android:textColor="#000000"/>
@@ -48,13 +48,13 @@
                 android:id="@+id/DAYHOUR"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="5dp"/>
 
             <TextView
                 android:id="@+id/tittle6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/Log"
                 android:textSize="20dp"
                 android:textColor="#000000"/>
@@ -63,13 +63,13 @@
                 android:id="@+id/LOG"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="5dp"/>
 
             <TextView
                 android:id="@+id/tittle7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/Email"
                 android:textSize="20dp"
                 android:textColor="#000000"/>
@@ -78,7 +78,7 @@
                 android:id="@+id/EMAIL_ADRESS"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"/>
+                android:layout_marginTop="5dp"/>
         </LinearLayout>
 
         <LinearLayout

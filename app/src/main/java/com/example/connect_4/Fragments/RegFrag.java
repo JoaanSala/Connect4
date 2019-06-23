@@ -1,6 +1,8 @@
 package com.example.connect_4.Fragments;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ public class RegFrag extends Fragment {
     private static final String PARCEL_FRAG_BOARD = "log_frag_board";
     private static final String PARCEL_FRAG_TC = "log_frag_tc";
     private static final String PARCEL_FRAG_TOTAL_TIME = "log_frag_total_time";
+    private static final String PARCEL_FRAG_LEFT_TIME = "log_frag_left_time";
     private static final String PARCEL_FRAG_RESULT = "log_frag_result";
 
 
@@ -30,6 +33,9 @@ public class RegFrag extends Fragment {
     TextView textView4;
     TextView textView7;
     TextView textView8;
+    TextView textView9;
+
+    Boolean time;
 
 
     public RegFrag() {
@@ -49,7 +55,9 @@ public class RegFrag extends Fragment {
             textView3.setText(savedInstanceState.getString(PARCEL_FRAG_BOARD));
             textView4.setText(savedInstanceState.getString(PARCEL_FRAG_TC));
             textView7.setText(savedInstanceState.getString(PARCEL_FRAG_TOTAL_TIME));
-            textView8.setText(savedInstanceState.getString(PARCEL_FRAG_RESULT));
+            textView8.setText(savedInstanceState.getString(PARCEL_FRAG_LEFT_TIME));
+            textView9.setText(savedInstanceState.getString(PARCEL_FRAG_RESULT));
+
         }
     }
 
@@ -76,15 +84,25 @@ public class RegFrag extends Fragment {
         textView0.setText(Integer.toString(pos));
         textView1.setText(log.getPlayer().toString());
         textView2.setText(log.getDate_time().toString());
-        textView3.setText(Integer.toString(log.getGrid()));
-        if (log.getTime_remaining() == null) {
-            textView4.setText(getString(R.string.negative));
-            textView7.setText("-");
-        } else {
-            textView4.setText(getString(R.string.affirmative));
-            textView7.setText(log.getTime_remaining());
+        textView3.setText(log.getGrid());
+        int resultado = Integer.parseInt(log.getGrid());
+        if(resultado==7){
+            textView7.setText(getString(R.string.grid_7));
+        }else if(resultado==6){
+            textView7.setText(getString(R.string.grid_6));
+        }else if(resultado==5){
+            textView7.setText(getString(R.string.grid_5));
         }
-        textView8.setText(log.getResult());
+
+        if (log.getTime_remaining().equals("-")) {
+            textView4.setText("NO");
+            textView8.setText(log.getTime_remaining());
+        } else {
+            textView4.setText("YES");
+            textView8.setText(log.getTime_remaining());
+        }
+        //if(textView8.getText().equals(log.getTime_remaining()));
+        textView9.setText(log.getResult());
     }
 
     private void createObjects(View view) {
@@ -94,7 +112,8 @@ public class RegFrag extends Fragment {
         textView3 = (TextView) view.findViewById(R.id.boardSize);
         textView4 = (TextView) view.findViewById(R.id.TimeControlValue);
         textView7 = (TextView) view.findViewById(R.id.TotalTimeValue);
-        textView8 = (TextView) view.findViewById(R.id.resultValue);
+        textView8 = (TextView) view.findViewById(R.id.leftTimeValue);
+        textView9 = (TextView) view.findViewById(R.id.resultValue);
     }
 
     @Override
@@ -107,7 +126,8 @@ public class RegFrag extends Fragment {
         outState.putString(PARCEL_FRAG_BOARD, textView3.getText().toString());
         outState.putString(PARCEL_FRAG_TC, textView4.getText().toString());
         outState.putString(PARCEL_FRAG_TOTAL_TIME, textView7.getText().toString());
-        outState.putString(PARCEL_FRAG_RESULT, textView8.getText().toString());
+        outState.putString(PARCEL_FRAG_LEFT_TIME, textView8.getText().toString());
+        outState.putString(PARCEL_FRAG_RESULT, textView9.getText().toString());
     }
 
 }

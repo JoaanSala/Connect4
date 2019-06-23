@@ -61,6 +61,7 @@
         android:id="@+id/EMAIL_ADRESS"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text=""
         android:layout_marginTop="10dp"/>
 
     <LinearLayout

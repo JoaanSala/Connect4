@@ -3,44 +3,40 @@ package com.example.connect_4;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Log implements Parcelable {
+public class Log implements Parcelable{
     private String player;
     private String result;
     private String date_time;
-    private int grid;
-    private String time_remaining;
+    private String grid;
+    private String time_left;
+    private String total_time;
+
 
     public Log(){}
 
-    public Log(String player, String result, String  date_time){
+    public Log(String player, String date_time, String  result){
         this.player = player;
-        this.result = result;
         this.date_time = date_time;
-    }
-
-    public Log(String player, String result, String date_time, int grid, String time_remaining){
-        this.player = player;
         this.result = result;
-        this.date_time = date_time;
-        this.grid = grid;
-        this.time_remaining = time_remaining;
     }
 
-    public String getTime_remaining() {
-        return time_remaining;
-    }
-
-    public void setTime_remaining(String time_remaining) {
-        this.time_remaining = time_remaining;
+    public Log(String aliasUser, String dateHour, String sizeGridView, String totalTime, String timeLeft, String stateMatch) {
+        this.player = aliasUser;
+        this.date_time = dateHour;
+        this.grid = sizeGridView;
+        this.total_time = totalTime;
+        this.time_left = timeLeft;
+        this.result = stateMatch;
     }
 
     protected Log(Parcel in) {
         player = in.readString();
         result = in.readString();
         date_time = in.readString();
-        grid = in.readInt();
-        time_remaining = in.readString();
+        grid = in.readString();
+        time_left = in.readString();
     }
+
 
     public static final Creator<Log> CREATOR = new Creator<Log>() {
         @Override
@@ -53,6 +49,14 @@ public class Log implements Parcelable {
             return new Log[size];
         }
     };
+
+    public String getTime_remaining() {
+        return time_left;
+    }
+
+    public void setTime_remaining(String time_left) {
+        this.time_left = time_left;
+    }
 
     public String getPlayer() {
         return player;
@@ -70,11 +74,11 @@ public class Log implements Parcelable {
         this.result = result;
     }
 
-    public int getGrid() {
+    public String getGrid() {
         return grid;
     }
 
-    public void setGrid(int grid) {
+    public void setGrid(String grid) {
         this.grid = grid;
     }
 
@@ -96,7 +100,8 @@ public class Log implements Parcelable {
         dest.writeString(player);
         dest.writeString(result);
         dest.writeString(date_time);
-        dest.writeInt(grid);
-        dest.writeString(time_remaining);
+        dest.writeString(grid);
+        dest.writeString(time_left);
+        dest.writeString(total_time);
     }
 }

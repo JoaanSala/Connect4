@@ -26,8 +26,6 @@ public class Game implements Parcelable {
         this.Gstate = Game_State.PLAYER1_PLAYS;
 
         Date date = new Date();
-        this.initTime = date.getTime();
-        this.leftTime = 30;
     }
 
     public Game(Parcel in) {

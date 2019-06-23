@@ -122,6 +122,30 @@
                 android:text="@string/default_number"
                 android:textSize="16sp" />
 
+            <TextView
+                android:id="@+id/textResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textBoard"
+                android:layout_margin="5dp"
+                android:text="@string/stateResult"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/resultValue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textBoard"
+                android:layout_marginBottom="5dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_toEndOf="@id/textResult"
+                android:layout_toRightOf="@id/textResult"
+                android:text="@string/defaultId"
+                android:textSize="16sp" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -150,7 +174,7 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/textResult"
+                android:layout_toEndOf="@id/textTimeControl"
                 android:layout_toRightOf="@id/TimeControlValue"
                 android:text="@string/defaultId"
                 android:textSize="16sp" />
@@ -176,23 +200,23 @@
                 android:layout_marginRight="5dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/textResult"
+                android:layout_toEndOf="@id/textTimeControl"
                 android:layout_toRightOf="@id/textTotalTime"
                 android:text="@string/default_number"
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/textResult"
+                android:id="@+id/textLeftTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/TotalTimeValue"
                 android:layout_margin="5dp"
-                android:text="@string/stateResult"
+                android:text="@string/leftTime"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/resultValue"
+                android:id="@+id/leftTimeValue"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/TotalTimeValue"
@@ -200,9 +224,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
-                android:layout_toEndOf="@id/textResult"
+                android:layout_toEndOf="@id/textTimeControl"
                 android:layout_toRightOf="@id/textTimeControl"
-                android:text="@string/defaultId"
+                android:text="@string/default_number"
                 android:textSize="16sp" />
         </RelativeLayout>
 

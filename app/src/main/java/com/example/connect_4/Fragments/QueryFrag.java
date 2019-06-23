@@ -28,7 +28,6 @@ public class QueryFrag extends Fragment {
 
     LogSQLiteHelper LogsHelper;
     SQLiteDatabase db;
-    Button buttonBack;
     Button buttonDelete;
     ListView listView;
     SQLAdapter adapter;
@@ -52,11 +51,10 @@ public class QueryFrag extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_query, container, false);
         listView = (ListView) view.findViewById(R.id.listViewQuery);
-        buttonBack = (Button) view.findViewById(R.id.buttonGoBack);
         buttonDelete = (Button) view.findViewById(R.id.buttonDelete);
         logs = new ArrayList<>();
 
-        LogsHelper = new LogSQLiteHelper(getContext(), "DBReversi", null, 2);
+        LogsHelper = new LogSQLiteHelper(getContext(), "DBConnect-4", null, 1);
         db = LogsHelper.getWritableDatabase();
 
         adapter = new SQLAdapter(getActivity(), logs, R.layout.db_items);
@@ -65,31 +63,22 @@ public class QueryFrag extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 Bundle b = new Bundle();
-                Cursor cursorReg = db.rawQuery("SELECT * FROM Logs WHERE _id = ?", new String[]{Integer.toString(position + 1)});
-                //Cursor cursorReg = db.rawQuery("SELECT * FROM Logs", null);
+                Cursor cursorReg = db.rawQuery("SELECT * FROM Partides WHERE _id = ?", new String[]{Integer.toString(position + 1)});
+
                 if (cursorReg.moveToFirst()) {
-                    Log log = new Log(cursorReg.getString(cursorReg.getColumnIndex("alias")),
-                            cursorReg.getString(cursorReg.getColumnIndex("resultado")),
-                            cursorReg.getString(cursorReg.getColumnIndex("data_hora")),
-                            cursorReg.getInt(cursorReg.getColumnIndex("tabla")),
-                            cursorReg.getString(cursorReg.getColumnIndex("tiempo_total")));
+                    Log log = new Log(cursorReg.getString(cursorReg.getColumnIndex("AliasUser")),
+                            cursorReg.getString(cursorReg.getColumnIndex("DateHour")),
+                            cursorReg.getString(cursorReg.getColumnIndex("SizeGridView")),
+                            cursorReg.getString(cursorReg.getColumnIndex("TotalTime")),
+                            cursorReg.getString(cursorReg.getColumnIndex("TimeLeft")),
+                            cursorReg.getString(cursorReg.getColumnIndex("StateMatch")));
                     b.putParcelable("LogId", log);
 
                     listener.queryFragment(b,position+1);
-                    /*
 
-                    }*/
                 } else
                     Toast.makeText(getActivity(), "Error en agafar les dades", Toast.LENGTH_LONG).show();
                 cursorReg.close();
-            }
-        });
-
-        buttonBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getActivity(), MainActivity.class));
-                getActivity().finish();
             }
         });
 
@@ -107,14 +96,14 @@ public class QueryFrag extends Fragment {
     }
 
     private List<Log> getAllLogs() {
-        Cursor cursor = db.rawQuery("SELECT * FROM Logs", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM Partides", null);
         List<Log> list = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast()) {
-                String alias = cursor.getString(cursor.getColumnIndex("alias"));
-                String date = cursor.getString(cursor.getColumnIndex("data_hora"));
-                String result = cursor.getString(cursor.getColumnIndex("resultado"));
+                String alias = cursor.getString(cursor.getColumnIndex("AliasUser"));
+                String date = cursor.getString(cursor.getColumnIndex("DateHour"));
+                String result = cursor.getString(cursor.getColumnIndex("StateMatch"));
 
                 list.add(new Log(alias, result, date));
                 cursor.moveToNext();
@@ -125,8 +114,8 @@ public class QueryFrag extends Fragment {
     }
 
     private void removeAll() {
-        String name_of_the_table = "Logs";
-        db.execSQL("delete from Logs");
+        String name_of_the_table = "Partides";
+        db.execSQL("delete from Partides");
         db.execSQL("DELETE FROM SQLITE_SEQUENCE WHERE NAME = '" + name_of_the_table + "'");
     }
 

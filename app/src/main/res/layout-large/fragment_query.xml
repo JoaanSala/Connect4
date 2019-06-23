@@ -43,18 +43,6 @@
 
                 <Button
                     android:layout_gravity="center_horizontal"
-                    android:id="@+id/buttonGoBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="60dp"
-                    android:drawableStart="@drawable/back"
-                    android:drawableLeft="@drawable/back"
-                    android:text="@string/back"
-                    android:textSize="20dp"
-                    android:drawablePadding="10dp"
-                    android:textColor="@android:color/black" />
-
-                <Button
-                    android:layout_gravity="center_horizontal"
                     android:id="@+id/buttonDelete"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,8 +52,6 @@
                     android:textSize="25dp"
                     android:drawablePadding="10dp"
                     android:textColor="@android:color/black"
-                    android:layout_toEndOf="@id/buttonGoBack"
-                    android:layout_toRightOf="@id/buttonGoBack"
                     android:layout_marginStart="30dp"
                     android:layout_marginLeft="30dp"/>
             </RelativeLayout>

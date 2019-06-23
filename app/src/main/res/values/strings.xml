@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Connect-4</string>
+    <string name="app_name">Connect 4</string>
 
     //Activity_Main
     <string name="App_name">MENÚ PRINCIPAL</string>
@@ -56,12 +56,21 @@
     <string name="numBlack">Num. Black:</string>
     <string name="numWhite">Num. White:</string>
     <string name="totalTime">Total time:</string>
+    <string name="leftTime">Time Left:</string>
     <string name="stateResult">Match results: </string>
     <string name="affirmative">Yes</string>
     <string name="negative">No</string>
     <string name="log_title">LOG of the match</string>
 
+    <string name="grid_7">60</string>
+    <string name="grid_6">45</string>
+    <string name="grid_5">30</string>
 
+    //Toast
+    <string name="toast_win">HAS GUANYAT !!</string>
+    <string name="toast_lose">HAS PERDUT !!</string>
+    <string name="toast_draw">HAS EMPATAT !!</string>
+    <string name="toast_out_time">S\'HA ACABAT EL TEMPS !!</string>
 
     //Preferences
     <string name="P_Alias">Alias</string>

@@ -23,17 +23,19 @@ import com.example.connect_4.BDSQLite.AccesDBActivity;
 import com.example.connect_4.BDSQLite.LogSQLiteHelper;
 import com.example.connect_4.Preferences.PreferencesActivity;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-public class ResultsActivity extends AppCompatActivity implements View.OnClickListener {
+public class ResultsActivity extends AppCompatActivity implements View.OnClickListener, Serializable {
 
     private LogSQLiteHelper LogHelper;
     private SQLiteDatabase db;
-    String Alias, Size, Status, Log;
-    int usedTime;
-    Date date;
+    String Alias, Size, Status, Log, leftTime, totaltime;
+    boolean time;
+    Log log;
+    String date;
     boolean timeControl;
 
     @Override
@@ -54,8 +56,11 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
         Alias = mySharedPreferences.getString(getString(R.string.P_Alias), "P1");
         Size = mySharedPreferences.getString(getString(R.string.P_Grill),"7");
         Status = in.getStringExtra("state");
-        date = new Date();
-        Log = Logbuilder(Alias, Size, Status, usedTime);
+        date = in.getStringExtra("DateHour");
+        totaltime = in.getStringExtra("timer");
+        leftTime = in.getStringExtra("time_left");
+
+        Log = Logbuilder(Alias, Size, Status, leftTime);
 
         EditText dayhour = findViewById(R.id.DAYHOUR);
         EditText log = findViewById(R.id.LOG);
@@ -65,26 +70,22 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
         dayhour.setText(new Date().toString());
         e_mail.requestFocus();
 
-        LogHelper = new LogSQLiteHelper(this, "DBConnect4", null, 2);
+        LogHelper = new LogSQLiteHelper(this, "DBConnect-4", null, 1);
         db = LogHelper.getWritableDatabase();
         create();
     }
 
     private void create() {
+
         if (db != null) {
-            ContentValues newRegister = new ContentValues();
-            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", new Locale("es", "ES"));
+            //ContentValues newRegister = new ContentValues();
+            db.execSQL("INSERT INTO Partides (AliasUser, DateHour, SizeGridView, TotalTime, TimeLeft, StateMatch)" +
+                    "VALUES ('"+Alias+"', '"+date+"', '"+Size+"', '"+totaltime+"', '"+leftTime+"', '"+Status+"')");
 
-            newRegister.put("AliasUser", Alias);
-            newRegister.put("DateHour", dateFormat.format(date));
-            newRegister.put("SizeGridView", Size);
-            newRegister.put("TimeControl", timeControl);
-            newRegister.put("TimeUsed", usedTime);
-            newRegister.put("StateMatch", Status);
-
-            db.insert("Matches", null, newRegister);
-        } else
+        }else{
             Toast.makeText(this, "No s'ha pogut guardar a la BD", Toast.LENGTH_LONG).show();
+        }
+        db.close();
     }
 
 
@@ -97,11 +98,14 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
 
         switch (v.getId()) {
             case R.id.EMAIL:
-                Toast.makeText(this, "Correu Destinatari", Toast.LENGTH_LONG).show();
-                Intent in = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + Mail_edit.getText().toString()));
-                in.putExtra(Intent.EXTRA_SUBJECT, "Log - " + DayHour_edit.getText().toString());
-                in.putExtra(Intent.EXTRA_TEXT, Log_edit.getText().toString());
-                startActivity(in);
+                if(Mail_edit.getText().toString().isEmpty()){
+                    Toast.makeText(this, "Falta Correu Destinatari", Toast.LENGTH_LONG).show();
+                }else {
+                    Intent in = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + Mail_edit.getText().toString()));
+                    in.putExtra(Intent.EXTRA_SUBJECT, "Log - " + DayHour_edit.getText().toString());
+                    in.putExtra(Intent.EXTRA_TEXT, "Alias: " + Alias + "\n" + "Mida Graella: " + Size + "   Temps total: "+ totaltime+"seg.\n" +"\n" +Status+"\n"+"Han sobrat: "+leftTime+" segons");
+                    startActivity(in);
+                }
                 break;
             case R.id.NEWGAME:
                 Intent in1 = new Intent(ResultsActivity.this, GameActivity.class);
@@ -114,9 +118,9 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
         }
     }
 
-    private String Logbuilder(String alias, String size, String status, int usedtime) {
+    private String Logbuilder(String alias, String size, String status, String lefttime) {
 
-        return alias + " | Mida Grid View: "+ size + " | Temps: "+ usedtime+"s | " + status;
+        return "Alias: " + alias + " | Mida Grid View: "+ size + "\nHan sobrat: " + lefttime + " segons |  "+ status;
     }
 
     @Override
@@ -140,5 +144,11 @@ public class ResultsActivity extends AppCompatActivity implements View.OnClickLi
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    @Override
+    protected void onDestroy(){
+        super.onDestroy();
+        db.close();
     }
 }

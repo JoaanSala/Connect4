@@ -1,6 +1,8 @@
 package com.example.connect_4;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -10,7 +12,7 @@ import android.widget.ImageView;
 import java.io.Serializable;
 
 
-public class ButtonAdapter extends BaseAdapter implements Serializable {
+public class ButtonAdapter extends BaseAdapter implements Parcelable {
 
     private Context mContext;
     private Integer[] Tokens;
@@ -19,6 +21,22 @@ public class ButtonAdapter extends BaseAdapter implements Serializable {
     public ButtonAdapter(Context c) {
         mContext = c;
     }
+
+    protected ButtonAdapter(Parcel in) {
+        num = in.readInt();
+    }
+
+    public static final Creator<ButtonAdapter> CREATOR = new Creator<ButtonAdapter>() {
+        @Override
+        public ButtonAdapter createFromParcel(Parcel in) {
+            return new ButtonAdapter(in);
+        }
+
+        @Override
+        public ButtonAdapter[] newArray(int size) {
+            return new ButtonAdapter[size];
+        }
+    };
 
     @Override
     public int getCount() {
@@ -42,7 +60,7 @@ public class ButtonAdapter extends BaseAdapter implements Serializable {
             imageView = new ImageView(mContext);
             imageView.setLayoutParams(new GridView.LayoutParams(135, 135));
             imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(5, 5, 5, 5);
+            imageView.setPadding(3, 3, 3, 3);
         } else {
             imageView = (ImageView) convertView;
         }
@@ -62,5 +80,15 @@ public class ButtonAdapter extends BaseAdapter implements Serializable {
     public void setToken(int token, int row, int col) {
         int position = num * (-(row - (num - 1))) + col;
         Tokens[position] = token;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(num);
     }
 }
